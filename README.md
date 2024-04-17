@@ -49,3 +49,7 @@ Linux b12ac565ef02 6.5.0-27-generic #28~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Fri M
     "ping": "pong"
 }
 ```
+
+```shell
+ansible-playbook -i inventory.ini playbook.yaml -u root
+```
