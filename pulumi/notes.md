@@ -15,3 +15,5 @@ Setup project SDK to point
 ```
 
 After `pulumi config set isMinikube true` in project dir `Pulumi.playground.yaml` file was created
+
+credentials in `~/.pulumi/credentials`
