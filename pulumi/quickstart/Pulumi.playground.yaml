@@ -1,2 +1,3 @@
 config:
-  quickstart:isMinikube: "false"
+#  also for microk8s
+  quickstart:isMinikube: "true"

@@ -13,3 +13,5 @@ Setup project SDK to point
 (venv) (base) toba@inspiron-15-7000:~/git/github/kube-playground$ which python
 /home/toba/git/github/kube-playground/pulumi/quickstart/venv/bin/python
 ```
+
+After `pulumi config set isMinikube true` in project dir `Pulumi.playground.yaml` file was created
