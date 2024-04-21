@@ -1,20 +1,18 @@
 Examples from https://github.com/Masterminds/learning-helm.git and the book
+## Drupal
+* https://github.com/bitnami/charts/tree/main/bitnami/drupal
+LoadBalancer is used in
+Change `LoadBalancer` to `ClusterIP` for Minikube/microK8s as in Pulumi via `--set service.type=ClusterIP`
 
-LoadBalancer is used in 
-```text
-drupal/templates/svc.yaml
-apiVersion: v1
-kind: Service
-...
-spec:
-  type: LoadBalancer
+```shell
+export REGISTRY_NAME=registry-1.docker.io
+export REPOSITORY_NAME=bitnamicharts
+# helm install my-release   --set service.type=ClusterIP,drupalUsername=admin,drupalPassword=password,mariadb.auth.rootPassword=secretpassword     oci://$REGISTRY_NAME/$REPOSITORY_NAME/drupal
+helm install my-drupal  oci://$REGISTRY_NAME/$REPOSITORY_NAME/drupal -f /home/toba/git/github/kube-playground/helm/drupal.values.yaml
 ```
 
-Try to change LoadBalancer to ClusterIP for Minikube/microK8s as in Pulumi via `--set service.type=ClusterIP`
-
-```text
-helm install mysite bitnami/drupal --set service.type=ClusterIP --version 12.5.13
-helm install mysite oci://registry-1.docker.io/bitnamicharts/drupal --set service.type=ClusterIP
+```shell
+kubectl port-forward --namespace default svc/my-release-drupal 8080:80
 ```
-MariaDB fails to start `find: '/docker-entrypoint-startdb.d/': No such file or directory`. 
-There is `drwxr-xr-x   2 root root 4096 Apr  2 18:35 docker-entrypoint-initdb.d`
+
+http://127.0.0.1:8080/ (admin/password)

@@ -1,0 +1,7 @@
+service:
+  type: ClusterIP
+drupalUsername: admin
+drupalPassword: password
+mariadb:
+  auth:
+    rootPassword: secret-password
