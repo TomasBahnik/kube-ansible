@@ -6,8 +6,9 @@ config = pulumi.Config()
 frontend_port = config.require_int("frontendPort")
 backend_port = config.require_int("backendPort")
 mongo_port = config.require_int("mongoPort")
-mongo_host = config.require(
-    "mongoHost")  # Note that strings are the default, so it's not `config.require_str`, just `config.require`.
+
+# Note that strings are the default, so it's not `config.require_str`, just `config.require`.
+mongo_host = config.require("mongoHost")
 database = config.require("database")
 node_environment = config.require("nodeEnvironment")
 protocol = config.require("protocol")
