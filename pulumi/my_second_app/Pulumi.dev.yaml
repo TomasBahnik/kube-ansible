@@ -1,0 +1,8 @@
+config:
+  my_second_app:backendPort: "3000"
+  my_second_app:database: cart
+  my_second_app:frontendPort: "3001"
+  my_second_app:mongoHost: mongodb://mongo:27017
+  my_second_app:mongoPort: "27017"
+  my_second_app:nodeEnvironment: development
+  my_second_app:protocol: http://

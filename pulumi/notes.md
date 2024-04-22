@@ -1,5 +1,8 @@
 ## Pulumi
 
+* [quickstart](quickstart) is pulumi kube project
+* [my_second_app](my_second_app) is pulumi docker project
+
 * https://www.pulumi.com/docs/clouds/kubernetes/get-started/ `curl -fsSL https://get.pulumi.com | sh`
 * `~/.pulumi/bin/pulumi`
 
