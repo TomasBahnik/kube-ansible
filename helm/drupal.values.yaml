@@ -1,7 +1,20 @@
+# with default value for service.type (LoadBalancer) EXTERNAL-IP stays in pending, but forwarding 80 works
+# for service.type=ClusterIP  EXTERNAL-IP is none
+
+# NAME                        TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)                      AGE
+#service/kubernetes          ClusterIP      10.152.183.1     <none>        443/TCP                      2d23h
+#service/my-drupal           LoadBalancer   10.152.183.22    <pending>     80:31399/TCP,443:32173/TCP   36m
+#service/my-drupal-mariadb   ClusterIP      10.152.183.161   <none>        3306/TCP                     36m
+
 service:
   type: ClusterIP
 drupalUsername: admin
 drupalPassword: password
+# helm upgrade error
+# 'mariadb.auth.password' must not be empty, please add '--set mariadb.auth.password=$MARIADB_PASSWORD' to the command. To get the current value:
+# export MARIADB_PASSWORD=$(kubectl get secret --namespace "default" my-drupal-mariadb -o jsonpath="{.data.mariadb-password}" | base64 -d)
+#
 mariadb:
   auth:
     rootPassword: secret-password
+    password: kdi11vH58L
