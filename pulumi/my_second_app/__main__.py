@@ -26,18 +26,17 @@ frontend = docker.RemoteImage(f"{frontend_image_name}_image",
                               name="pulumi/tutorial-pulumi-fundamentals-frontend:latest"
                               )
 
-# Pull the MongoDB image with amd64 arch
-# pulumi/tutorial-pulumi-fundamentals-database-local is arm64
-mongo_image = docker.RemoteImage("mongo_image",
-                                 name="pulumi/tutorial-pulumi-fundamentals-database:latest"
-                                 )
+# docker build -t pulumi-database-local:latest .
+# in /home/toba/git/github/tutorial-pulumi-fundamentals/data
+# with changed health check mongo -> mongosh
+mongo_image_name = "pulumi-database-local:latest"
 
 # Create a Docker network
 network = docker.Network("network", name=f"services_{stack}")
 
 # Create the MongoDB container
 mongo_container = docker.Container("mongo_container",
-                                   image=mongo_image.repo_digest,
+                                   image=mongo_image_name,
                                    name=f"mongo-{stack}",
                                    ports=[docker.ContainerPortArgs(
                                        internal=mongo_port,
