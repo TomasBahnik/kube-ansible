@@ -7,7 +7,7 @@
 * `~/.pulumi/bin/pulumi`
 
 ### Login to Pulumi cloud
-`toba65, HrdyBudzes...!1`
+`toba65, H...B...!1`
 
 ###
 New venv installed in `pulumi/quickstart/venv`. There is `pulumi/quickstart/requirements.txt`
@@ -44,3 +44,29 @@ replicaset.apps/nginx-ff93a038-7854ff8877   1         1         1       10m
 http://192.168.1.115:8080/
 
 `pulumi destroy`
+
+## Quickstart
+* `cd pulumi/quickstart/`
+* `source venv/bin/activate`
+* `python = kube-playground/pulumi/quickstart/venv/bin/python`
+* change project setting SDK to the above
+
+Install to k8s cluster
+```text
+pulumi up
+Previewing update (playground)
+
+
+     Type                              Name                   Plan       
+ +   pulumi:pulumi:Stack               quickstart-playground  create     
+ +   ├─ kubernetes:apps/v1:Deployment  nginx                  create     
+ +   └─ kubernetes:core/v1:Service     nginx                  create     
+
+Outputs:
+    ip: "10.152.183.0"
+
+Resources:
+    + 3 to create
+
+Do you want to perform this update? yes
+```
